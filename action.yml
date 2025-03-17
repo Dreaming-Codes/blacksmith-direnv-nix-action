@@ -33,11 +33,14 @@ inputs:
 runs:
     using: "composite"
     steps:
-        - name: Mount Nix Store
+        - name: Load Nix Store Disk
           uses: useblacksmith/stickydisk@v1
           with:
               key: ${{ github.repository }}-nix-store
-              path: /nix/store
+              path: ~/nix/store
+
+        - name: Mount Nix Store
+          run: sudo mkdir -p /nix/ && sudo mount --bind ~/nix/store /nix/store
 
         - uses: cachix/install-nix-action@v31
           if: ${{ inputs.install-nix == 'true' }}
