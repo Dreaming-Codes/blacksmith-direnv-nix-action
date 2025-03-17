@@ -41,7 +41,7 @@ runs:
 
         - name: Mount Nix Store
           shell: bash
-          run: sudo mkdir -p /nix/ && sudo mount --bind ~/nix/store /nix/store
+          run: sudo mkdir -p /nix/store && sudo mount --bind ~/nix/store /nix/store
 
         - uses: cachix/install-nix-action@v31
           if: ${{ inputs.install-nix == 'true' }}
