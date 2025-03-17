@@ -40,6 +40,7 @@ runs:
               path: ~/nix/store
 
         - name: Mount Nix Store
+          shell: bash
           run: sudo mkdir -p /nix/ && sudo mount --bind ~/nix/store /nix/store
 
         - uses: cachix/install-nix-action@v31
